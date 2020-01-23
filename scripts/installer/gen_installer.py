@@ -52,7 +52,7 @@ def generate_pynsist_config(dependencies, wheel_dir, cfg_location, bzt_version):
     }
 
     cfg['Command bzt-pip'] = {
-        'entry_point': 'pip._internal:main'
+        'entry_point': 'pip._internal.main:main'
     }
 
     cfg['Command bzt-run'] = {
@@ -142,7 +142,7 @@ def main():
         sys.exit(1)
     bzt_dist = sys.argv[1]
 
-    tkinter_link = STORAGE_URL + "pynsist_tkinter_3.6_64bit.zip"
+    tkinter_link = STORAGE_URL + "pynsist_tkinter_3.7_64bit.zip"
 
     pynsist_config = "installer-gen.cfg"
     wheel_dir = "build/wheels"
@@ -154,7 +154,8 @@ def main():
     extra_wheels = [
         "fuzzyset-0.0.19-cp37-cp37m-win_amd64.whl",
         "python_Levenshtein-0.12.0-cp37-cp37m-win_amd64.whl",
-        "urwid-2.0.1-cp37-cp37m-win_amd64.whl"]
+        "urwid-2.0.1-cp37-cp37m-win_amd64.whl",
+        "msgpack_python-0.5.6-cp37-cp37m-win_amd64.whl"]
     add_extra_wheels(wheel_dir, extra_wheels)
     for pkg in additional_packages:
         fetch_all_wheels(pkg, wheel_dir)
